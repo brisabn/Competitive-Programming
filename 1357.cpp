@@ -2,8 +2,10 @@
 #include <cstring>
 #include <string>
 #include <stdio.h>
+// #include <fstream>
 
 using namespace std;
+// ofstream cout("filename.txt");
 
 char um[3][2] = {{'*', '.'},
                  {'.', '.'},
@@ -125,7 +127,7 @@ void qual_numero(const char *numero0, const char *numero1, int i)
 
 int main()
 {
-    int D, j, k;
+    int D, j, k, linha_extra = 0;
 
     while (cin >> D)
     {
@@ -141,6 +143,11 @@ int main()
         // Traduz digitos para braille
         if (choice == 'B')
         {
+            if (linha_extra != 0)
+            {
+                cout << endl;
+            }
+            linha_extra = 1;
 
             string str1, str2, str3;
             getline(cin >> ws, str1);
@@ -157,7 +164,6 @@ int main()
                 k += 3;
                 j++;
             }
-            cout << endl;
         }
 
         // Traduz braille para digito
@@ -170,6 +176,12 @@ int main()
             j = 0;
             while (j < 3)
             {
+                if (linha_extra != 0)
+                {
+                    cout << endl;
+                }
+                linha_extra = 1;
+
                 for (int q = 0; q < D; q++)
                 {
                     for (int i = 0; i < 2; i++)
@@ -177,10 +189,9 @@ int main()
                         int n = numero[q] - '0';
                         qual_braille(n, j, i);
                     }
-                    cout << " ";
+                    if (q < D - 1)
+                        cout << " ";
                 }
-
-                cout << endl;
                 j++;
             }
         }
