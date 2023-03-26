@@ -1,20 +1,16 @@
-#include <string>
 #include <iostream>
-
+#include <cstdlib>
 using namespace std;
+
 int main()
 {
     int D;
-    // scanf("%d", &D);
+    cin >> D;
 
-    string str1;
-    getline(cin, str1);
-    // const char *numero1 = str1.c_str();
-    // cin >> str2;
-    //  const char *numero2 = str2.c_str();
-    //  cin >> str3;
-    //  const char *numero3 = str3.c_str();
+    cout << "A main() começou..." << endl;
+    cout << "Chamando a exit()..." << endl;
+    exit(0);
+    cin >> D;
 
-    cout << str1;
     return 0;
 }
