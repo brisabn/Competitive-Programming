@@ -5,7 +5,7 @@
 // #include <fstream>
 
 using namespace std;
-// ofstream cout("filename.txt");
+// ofstream out("filename.txt");
 
 char um[3][2] = {{'*', '.'},
                  {'.', '.'},
