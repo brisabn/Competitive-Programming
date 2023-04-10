@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <list>
+
 using namespace std;
 
 #define INF 0x3f3f3f3f
@@ -50,7 +52,7 @@ int Graph::shortestPath(int src, int dest)
             int weight = i.second;
             if (dist[v] > dist[u] + weight)
             {
-                dist[v] = dist[u] + weight;
+                dist[v] += weight;
                 pq.push({dist[v], v});
             }
         }
@@ -84,17 +86,10 @@ int main()
             dis = g.shortestPath(i, Servidor - 1);
             maiorDist = max(dis, maiorDist);
             menorDist = min(dis, menorDist);
-
-            cout
-                << i + 1 << " " << dis << endl;
         }
     }
 
-    cout
-        << maiorDist - menorDist << endl;
-
-    // for (int i = 0; i < N; i++)
-    //     cout << "from " << i + 1 << " " << g.shortestPath(0, Servidor) << endl;
+    cout << maiorDist - menorDist << endl;
 
     return 0;
 }
