@@ -1,5 +1,4 @@
-// Cerco a Leningrado - Utiliza algoritmo de dijkstra.
-
+// 2683 - ESPAÇO DE PROJETO, PRIM
 #include <iostream>
 
 using namespace std;

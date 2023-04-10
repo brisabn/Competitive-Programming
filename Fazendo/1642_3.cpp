@@ -1,3 +1,4 @@
+// 1642 - TECLADO QUEBRADO
 #include <iostream>
 #include <string>
 
