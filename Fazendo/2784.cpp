@@ -3,14 +3,12 @@
 #include <queue>
 #include <list>
 
-using namespace std;
-
 #define INF 0x3f3f3f3f
 
 class Graph
 {
     int V;
-    vector<vector<pair<int, int>>> adj;
+    std::vector<std::list<std::pair<int, int>>> adj;
 
 public:
     Graph(int V);
@@ -32,18 +30,19 @@ void Graph::addEdge(int u, int v, int w)
 
 int Graph::shortestPath(int src, int dest)
 {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    vector<int> dist(V, INF);
+    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,
+                        std::greater<std::pair<int, int>>>
+        pq;
+    std::vector<int> dist(V, INF);
     pq.push({0, src});
     dist[src] = 0;
-    int minDist = INF;
+    int menorDist = INF;
     while (!pq.empty())
     {
         int u = pq.top().second;
         pq.pop();
         if (u == dest)
         {
-            minDist = dist[u];
             break;
         }
         for (auto i : adj[u])
@@ -52,30 +51,25 @@ int Graph::shortestPath(int src, int dest)
             int weight = i.second;
             if (dist[v] > dist[u] + weight)
             {
-                dist[v] += weight;
+                dist[v] = dist[u] + weight;
                 pq.push({dist[v], v});
             }
         }
     }
-    return minDist;
+    return dist[dest];
 }
 
-// Driver's code
 int main()
 {
     int N, M, Servidor;
-    Graph g(N);
-
     scanf("%d %d", &N, &M);
-
+    Graph g(N);
     for (int i = 0; i < M; i++)
     {
         int u, v, Ping;
         scanf("%d %d %d", &u, &v, &Ping);
         g.addEdge(u - 1, v - 1, Ping);
-        g.addEdge(v - 1, u - 1, Ping);
     }
-
     scanf("%d", &Servidor);
     int maiorDist = 0, menorDist = INF;
     for (int i = 0; i < N; i++)
@@ -84,12 +78,10 @@ int main()
         {
             int dis = 0;
             dis = g.shortestPath(i, Servidor - 1);
-            maiorDist = max(dis, maiorDist);
-            menorDist = min(dis, menorDist);
+            maiorDist = std::max(dis, maiorDist);
+            menorDist = std::min(dis, menorDist);
         }
     }
-
-    cout << maiorDist - menorDist << endl;
-
+    printf("%d\n", maiorDist - menorDist);
     return 0;
 }
