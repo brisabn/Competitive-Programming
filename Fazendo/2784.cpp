@@ -4,11 +4,12 @@
 #include <list>
 
 #define INF 0x3f3f3f3f
+using namespace std;
 
 class Graph
 {
     int V;
-    std::vector<std::list<std::pair<int, int>>> adj;
+    vector<list<pair<int, int>>> adj;
 
 public:
     Graph(int V);
@@ -30,10 +31,10 @@ void Graph::addEdge(int u, int v, int w)
 
 int Graph::shortestPath(int src, int dest)
 {
-    std::priority_queue<std::pair<int, int>, std::vector<std::pair<int, int>>,
-                        std::greater<std::pair<int, int>>>
+    priority_queue<pair<int, int>, vector<pair<int, int>>,
+                   greater<pair<int, int>>>
         pq;
-    std::vector<int> dist(V, INF);
+    vector<int> dist(V, INF);
     pq.push({0, src});
     dist[src] = 0;
     int menorDist = INF;
@@ -78,8 +79,8 @@ int main()
         {
             int dis = 0;
             dis = g.shortestPath(i, Servidor - 1);
-            maiorDist = std::max(dis, maiorDist);
-            menorDist = std::min(dis, menorDist);
+            maiorDist = max(dis, maiorDist);
+            menorDist = min(dis, menorDist);
         }
     }
     printf("%d\n", maiorDist - menorDist);
