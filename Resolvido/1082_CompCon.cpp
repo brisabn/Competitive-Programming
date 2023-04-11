@@ -6,7 +6,7 @@ using std::vector;
 
 const int MAX_V = 26;
 
-class Graph // acho que fica mais claro enxergar com classe, e menos parametros pra dfs
+class Grafo // acho que fica mais claro enxergar com classe, e menos parametros pra dfs
 {
 public:
     vector<int> adj[MAX_V];
@@ -33,7 +33,7 @@ int main()
 
     while (case_ < cases)
     {
-        Graph g;
+        Grafo g;
         vector<vector<int>> components;
 
         int V, E;
