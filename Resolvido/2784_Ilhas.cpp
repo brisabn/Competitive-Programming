@@ -1,5 +1,5 @@
 // 2784 - Ilhas (Algoritmo de Dijkstra)
-#include <cstdio> // aparentemente deixou mais rápido
+#include <cstdio>
 #include <vector>
 #include <queue>
 
