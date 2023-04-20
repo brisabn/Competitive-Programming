@@ -1,15 +1,15 @@
-#include <algorithm>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
 struct Edge
 {
-    int u, v, w;
+    int u, v, custo;
 };
 
-int kruskal_min(const vector<Edge> &edges, int n)
+int kruskal_min(const vector<Edge> &aresta, int n)
 {
     vector<int> parent(n + 1);
     for (int i = 1; i <= n; ++i)
@@ -18,9 +18,9 @@ int kruskal_min(const vector<Edge> &edges, int n)
     }
 
     int ans = 0;
-    for (const auto &edge : edges)
+    for (const auto &a : aresta)
     {
-        int u = edge.u, v = edge.v, w = edge.w;
+        int u = a.u, v = a.v, w = a.custo;
         while (parent[u] != u)
         {
             u = parent[u];
@@ -41,7 +41,7 @@ int kruskal_min(const vector<Edge> &edges, int n)
     return ans;
 }
 
-int kruskal_max(const vector<Edge> &edges, int n)
+int kruskal_max(const vector<Edge> &aresta, int n)
 {
     vector<int> parent(n + 1);
     for (int i = 1; i <= n; ++i)
@@ -50,9 +50,9 @@ int kruskal_max(const vector<Edge> &edges, int n)
     }
 
     int ans = 0;
-    for (const auto &edge : edges)
+    for (const auto &a : aresta)
     {
-        int u = edge.u, v = edge.v, w = edge.w;
+        int u = a.u, v = a.v, w = a.custo;
 
         while (parent[u] != u)
         {
@@ -77,26 +77,25 @@ int kruskal_max(const vector<Edge> &edges, int n)
 int main()
 {
     int n;
-    cin >> n;
-
-    vector<Edge> edges(n);
+    scanf("%d", &n);
+    vector<Edge> aresta(n);
 
     for (int i = 0; i < n; ++i)
     {
-        cin >> edges[i].u >> edges[i].v >> edges[i].w;
+        scanf("%d %d %d", &aresta[i].u, &aresta[i].v, &aresta[i].custo);
     }
 
-    sort(edges.begin(), edges.end(),
+    sort(aresta.begin(), aresta.end(),
          [](const Edge &a, const Edge &b)
-         { return a.w > b.w; });
+         { return a.custo > b.custo; });
 
-    cout << kruskal_max(edges, n) << endl;
+    printf("%d\n", kruskal_max(aresta, n));
 
-    sort(edges.begin(), edges.end(),
+    sort(aresta.begin(), aresta.end(),
          [](const Edge &a, const Edge &b)
-         { return a.w < b.w; });
+         { return a.custo < b.custo; });
 
-    cout << kruskal_min(edges, n) << endl;
+    printf("%d\n", kruskal_min(aresta, n));
 
     return 0;
 }
