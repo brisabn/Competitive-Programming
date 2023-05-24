@@ -14,12 +14,15 @@ int pudimLCS(const std::string &str1, const std::string &str2)
     dp[0][0] = 0;
     // bottom up
     for (int i = 0; i < tam1; i++)
+    {
         for (int j = 0; j < tam2; j++)
+        {
             if (str1[i] == str2[j])
                 dp[i + 1][j + 1] = dp[i][j] + 1;
             else
                 dp[i + 1][j + 1] = std::max(dp[i][j + 1], dp[i + 1][j]);
-
+        }
+    }
     return dp[tam1][tam2];
 }
 
