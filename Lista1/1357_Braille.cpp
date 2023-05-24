@@ -3,9 +3,9 @@
 #include <string>
 #include <stdio.h>
 // #include <fstream>
+// ofstream kout("filename.txt");
 
 using namespace std;
-// ofstream out("filename.txt");
 
 char um[3][2] = {{'*', '.'},
                  {'.', '.'},

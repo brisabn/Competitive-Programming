@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <vector>
 #include <queue>
+#include <iostream>
 
 #define INF 0x3f3f3f3f
 
@@ -47,6 +48,8 @@ int Graph::Caminho_Dijkstra(int servidor, int dest)
         {
             int v = i.first;
             int weight = i.second;
+            std::cout << v << " " << weight << std::endl;
+
             if (dist[v] > dist[u] + weight)
             {
                 dist[v] = dist[u] + weight;
@@ -54,6 +57,8 @@ int Graph::Caminho_Dijkstra(int servidor, int dest)
             }
         }
     }
+    std::cout << std::endl;
+
     return dist[dest];
 }
 

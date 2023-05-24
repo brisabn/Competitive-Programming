@@ -12,19 +12,21 @@ public:
     vector<int> adj[MAX_V];
     bool visited[MAX_V];
 
-    void dfs(int u, vector<int> &comp)
+    void dfs(int u, vector<int> &comp);
+};
+
+void Grafo::dfs(int u, vector<int> &comp)
+{
+    visited[u] = true;
+    comp.push_back(u);
+    for (int v : adj[u]) // isso aqui foi bem útil! yee, for inteligente é mt bom
     {
-        visited[u] = true;
-        comp.push_back(u);
-        for (int v : adj[u]) // isso aqui foi bem útil! yee, for inteligente é mt bom
+        if (!visited[v])
         {
-            if (!visited[v])
-            {
-                dfs(v, comp);
-            }
+            dfs(v, comp);
         }
     }
-};
+}
 
 int main()
 {
