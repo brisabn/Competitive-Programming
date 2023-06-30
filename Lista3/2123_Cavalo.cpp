@@ -7,11 +7,10 @@ const int INF = 0x3f3f3f3f;
 
 class Grafo
 {
-private:
+public:
     int V;
     vector<vector<int>> grafo;
 
-public:
     Grafo(int vertices) : V(vertices), grafo(vertices, vector<int>(vertices, 0)) {}
 
     void addEdge(int u, int v, int peso)

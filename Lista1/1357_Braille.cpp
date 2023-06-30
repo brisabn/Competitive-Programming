@@ -3,7 +3,7 @@
 #include <string>
 #include <stdio.h>
 // #include <fstream>
-// ofstream kout("filename.txt");
+// std::ofstream kout("filename.txt");
 
 using namespace std;
 
